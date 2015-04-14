@@ -13,7 +13,7 @@ import codecs
 from sklearn import feature_extraction
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
-from com.qqgeogor.theano.read_files import GetFileList
+from read_files import GetFileList
 
 import random
 from numpy.linalg  import norm
