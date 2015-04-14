@@ -13,6 +13,7 @@ import codecs
 from sklearn import feature_extraction
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
+from com.qqgeogor.theano.read_files import GetFileList
 
 
 path = "4.txt"
@@ -54,7 +55,29 @@ corpus=["我 来到 北京 清华大学",#第一类文本切词后的结果，�
     "小明 硕士 毕业 与 中国 科学院",#第三类文本的切词结果
     "我 爱 北京 天安门"]#第四类文本的切词结果
 '''
+res=GetFileList("")
+print res
+
+def cutfile(path):
+    #path = "8.txt"
+    file = codecs.open(path,"r",'gbk')
+    
+    content = file.read()
+    
+    words = jieba.cut(content, cut_all=False)
+    array=""
+    for word in words:
+        array+=(word+' ')
+    return array
+    
+
 corpus = []
+
+for f in res:
+    str=cutfile(f)
+    corpus.append(str)
+
+
 vectorizer=CountVectorizer()#该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
 transformer=TfidfTransformer()#该类会统计每个词语的tf-idf权值
 tfidf=transformer.fit_transform(vectorizer.fit_transform(corpus))#第一个fit_transform是计算tf-idf，第二个fit_transform是将文本转为词频矩阵
