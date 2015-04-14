@@ -15,6 +15,14 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from com.qqgeogor.theano.read_files import GetFileList
 
+import random
+from numpy.linalg  import norm
+import numpy.matlib as ml
+from matplotlib import pyplot
+import pickle
+from numpy import zeros, array
+from numpy.lib.shape_base import tile
+from com.qqgeogor.theano.kmeans import kmeans
 
 path = "4.txt"
 file = codecs.open(path,"r",'gbk')
@@ -87,3 +95,32 @@ for i in range(len(weight)):#打印每类文本的tf-idf词语权重，第一个
     print u"-------这里输出第",i,u"类文本的词语tf-idf权重------"
     for j in range(len(word)):
         print word[j],weight[i][j]
+        
+
+
+N = 0
+for smp in weight:
+    N += len(smp[0])
+X = zeros((N, 2))
+idxfrm = 0
+for i in range(len(weight)):
+    idxto = idxfrm + len(weight[i][0])
+    X[idxfrm:idxto, 0] = weight[i][0]
+    X[idxfrm:idxto, 1] = weight[i][1]
+    idxfrm = idxto
+
+def observer(iter, labels, centers):
+    print "iter %d." % iter
+    colors = array([[1, 0, 0], [0, 1, 0], [1, 0, 1], [0, 1, 1], [1, 1, 1]])
+    pyplot.plot(hold=False)  # clear previous plot
+    pyplot.hold(True)
+
+    # draw points
+    data_colors=[colors[lbl] for lbl in labels]
+    pyplot.scatter(X[:, 0], X[:, 1], c=data_colors, alpha=0.5)
+    # draw centers
+    pyplot.scatter(centers[:, 0], centers[:, 1], s=200, c=colors)
+
+    pyplot.savefig('iter_%d.png' % iter, format='png')
+
+kmeans(X, 2)
