@@ -3,7 +3,7 @@
 import random
 from numpy.linalg  import norm
 import numpy.matlib as ml
-from matplotlib import pyplot
+#from matplotlib import pyplot
 import pickle
 from numpy import zeros, array
 from numpy.lib.shape_base import tile
