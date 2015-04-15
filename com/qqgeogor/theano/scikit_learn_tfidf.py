@@ -22,7 +22,7 @@ import numpy.matlib as ml
 import pickle
 from numpy import zeros, array
 from numpy.lib.shape_base import tile
-from com.qqgeogor.theano.kmeans import kmeans
+from kmeans import kmeans
 
 path = "4.txt"
 file = codecs.open(path,"r",'gbk')
