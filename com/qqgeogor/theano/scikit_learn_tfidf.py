@@ -18,7 +18,7 @@ from read_files import GetFileList
 import random
 from numpy.linalg  import norm
 import numpy.matlib as ml
-from matplotlib import pyplot
+#from matplotlib import pyplot
 import pickle
 from numpy import zeros, array
 from numpy.lib.shape_base import tile
@@ -108,7 +108,7 @@ for i in range(len(weight)):
     X[idxfrm:idxto, 0] = weight[i][0]
     X[idxfrm:idxto, 1] = weight[i][1]
     idxfrm = idxto
-
+'''
 def observer(iter, labels, centers):
     print "iter %d." % iter
     colors = array([[1, 0, 0], [0, 1, 0], [1, 0, 1], [0, 1, 1], [1, 1, 1]])
@@ -122,5 +122,5 @@ def observer(iter, labels, centers):
     pyplot.scatter(centers[:, 0], centers[:, 1], s=200, c=colors)
 
     pyplot.savefig('iter_%d.png' % iter, format='png')
-
+'''
 kmeans(X, 2)

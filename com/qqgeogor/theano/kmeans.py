@@ -3,7 +3,7 @@
 import random
 from numpy.linalg  import norm
 import numpy.matlib as ml
-#from matplotlib import pyplot
+from matplotlib import pyplot
 import pickle
 from numpy import zeros, array
 from numpy.lib.shape_base import tile
@@ -76,8 +76,8 @@ if __name__ == '__main__':
         X[idxfrm:idxto, 0] = samples[i][0]
         X[idxfrm:idxto, 1] = samples[i][1]
         idxfrm = idxto
-    kmeans(X, 3, observer=None)
-'''
+   
+
     def observer(iter, labels, centers):
         print "iter %d." % iter
         colors = array([[1, 0, 0], [0, 1, 0], [1, 0, 1], [0, 1, 1], [1, 1, 1]])
@@ -91,7 +91,7 @@ if __name__ == '__main__':
         pyplot.scatter(centers[:, 0], centers[:, 1], s=200, c=colors)
  
         pyplot.savefig('iter_%d.png' % iter, format='png')
-'''
+    kmeans(X, 3, observer=None)
     
         
         
