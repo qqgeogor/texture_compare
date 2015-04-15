@@ -22,8 +22,8 @@ import numpy.matlib as ml
 import pickle
 from numpy import zeros, array
 from numpy.lib.shape_base import tile
-from kmeans import kmeans
-
+from kmeans import kmeans   
+'''
 path = "4.txt"
 file = codecs.open(path,"r",'gbk')
 
@@ -56,7 +56,6 @@ array3=""
 for word in words3:
     array3+=(word+' ')
 
-'''
 
 corpus=["我 来到 北京 清华大学",#第一类文本切词后的结果，词之间以空格隔开
     "他 来到 了 网易 杭研 大厦",#第二类文本的切词结果
