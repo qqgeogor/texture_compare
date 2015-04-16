@@ -22,13 +22,8 @@ import numpy.matlib as ml
 import pickle
 from numpy import zeros, array
 from numpy.lib.shape_base import tile
-from kmeans import kmeans   
 
-def create_weight():
-    res=GetFileList("")
-    print res
-    
-    def cutfile(path):
+def cutfile(path):
         #path = "8.txt"
         file = codecs.open(path,"r",)
         
@@ -39,6 +34,12 @@ def create_weight():
         for word in words:
             array+=(word+' ')
         return array
+
+def create_weight():
+    res=GetFileList("")
+    print res
+    
+    
         
     
     corpus = []
@@ -46,7 +47,7 @@ def create_weight():
     for f in res:
         str=cutfile(f)
         corpus.append(str)
-    
+        
     
     vectorizer=CountVectorizer()#该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
     transformer=TfidfTransformer()#该类会统计每个词语的tf-idf权值
