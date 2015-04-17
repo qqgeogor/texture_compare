@@ -55,19 +55,21 @@ def create_weight():
     for f in res1:
         str=cutfile(f)
         corpus.append(str)
-        y.append(1)
+        y.append([0,0])
+        
     for f in res2:
         str=cutfile(f)
         corpus.append(str)
-        y.append(2)
+        y.append((0,1))
+        
     for f in res3:
         str=cutfile(f)
         corpus.append(str)
-        y.append(3)
+        y.append((1,0))
     for f in res4:
         str=cutfile(f)
         corpus.append(str)
-        y.append(4)
+        y.append((1,1))
     res =res1+res2+res3+res4
     print res
     print y
@@ -122,7 +124,7 @@ def mlp_network(z,y):
     input_size,output_size = len(z[0]),len(y)
     ds = SupervisedDataSet(input_size,output_size)
     print input_size
-    for i in range(len(z)):
+    for i in range(len(z)-3):
         ds.addSample(z[i],y[i])
     
     net = buildNetwork(input_size, 9,output_size, 
